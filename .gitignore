@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+/x64/Debug
+/DataStructures/Debug
+/DataStructures/x64/Debug
+/Debug
+/DataStructures/DataStructures.vcxproj
+/DataStructures/DataStructures.vcxproj.filters
+/DataStructures/DataStructures.vcxproj.user
+/.vs/DataStructures/v16
