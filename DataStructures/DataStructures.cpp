@@ -1,14 +1,15 @@
 #include "Stack.h"
 #include "Queue.h"
+#include "HashTable.h"
 #include <iostream>
 
-int execStack() {
+void execStack() {
     char character;
     Stack stack;
     char stackItem;
 
     std::cin.ignore();
-    std::cout << "Add an String:" << std::endl;
+    std::cout << "Type an string and press Enter:\n" << std::endl;
     std::cin.get(character);
 
     while (character != '\n')
@@ -17,24 +18,22 @@ int execStack() {
         std::cin.get(character);
     }
 
-    std::cout << "\n\nFirst in, last out. Last in, first out:" << std::endl;
+    std::cout << "\n\nFirst in, last out. Last in, first out:\n" << std::endl;
 
     while (!stack.isEmpty())
     {
         stackItem = stack.pop();
         std::cout << stackItem;
     }
-
-    return 0;
 }
 
-int execQueue() {
+void execQueue() {
     char character;
     Queue queue;
     char queueItem;
 
     std::cin.ignore();
-    std::cout << "Add an String:" << std::endl;
+    std::cout << "Type an string and press Enter:\n" << std::endl;
     std::cin.get(character);
 
     while (character != '\n')
@@ -43,30 +42,61 @@ int execQueue() {
         std::cin.get(character);
     }
 
-    std::cout << "\n\nFirst in, first out. Last in, last out:" << std::endl;
+    std::cout << "\n\nFirst in, first out. Last in, last out:\b" << std::endl;
 
     while (!queue.isEmpty())
     {
         queueItem = queue.dequeue();
         std::cout << queueItem;
     }
-
-    return 0;
 }
 
-int execHashTable() {
-    std::cout << "Not implemented yet :(" << std::endl;
-    return 0;
+void execHashTable() {
+    Hash studentsHash(10);
+    int ids[7] = { 12880, 12001, 11988, 12567, 12411, 11710, 13011 };
+    std::string names[7] = { "Samy", "Ash", "Slash", "Marcus", "Jimmy", "Anne", "Kate" };
+    int arrLength = (sizeof(names) / sizeof(names[0]));
+
+    for (int i = 0; i < arrLength; i++)
+    {
+        Student student = Student(ids[i], names[i]);
+        studentsHash.insertItemWithoutCollision(student);
+    }
+    studentsHash.print();
+
+    int newStudentId = 0;
+    std::cin.ignore();
+    std::cout << "Type an Id to search the student and press Enter:\n" << std::endl;
+    std::cin >> newStudentId;
+
+    Student newStudent(newStudentId, "");
+    bool found = false;
+    studentsHash.retrieveItemWithoutCollision(newStudent, found);
+
+    if (found == false) {
+        char addStudent;
+        std::cout << "Not found. Do you want add this student? (Y/N)\n" << std::endl;
+        std::cin >> addStudent;
+        if (addStudent == tolower('y')) {
+            std::string newStudentName;
+            std::cout << "Type the name of the student and press Enter:\n" << std::endl;
+            std::cin >> newStudentName;
+            Student newStudent(newStudentId, newStudentName);
+            studentsHash.insertItemWithoutCollision(newStudent);
+            studentsHash.print();
+            studentsHash.deleteItemWithoutCollision(newStudent);
+        }
+    }
+    else
+        std::cout << newStudent.getName() << ":" << found << std::endl;
 }
 
-int execBinarySearchTree() {
+void execBinarySearchTree() {
     std::cout << "Not implemented yet :(" << std::endl;
-    return 0;
 }
 
-int execGraph() {
+void execGraph() {
     std::cout << "Not implemented yet :(" << std::endl;
-    return 0;
 }
 
 int main()
@@ -100,6 +130,6 @@ int main()
             std::cout << std::endl;
     }
 
-    std::cout << "\n\nEnd of program." << std::endl;
     std::cout << std::endl;
+    return 0;
 }
