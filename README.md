@@ -12,25 +12,17 @@ Console application made with C++ with 5 of the most common data structures:
 
 - Windows
 
-1. Install C++ via VisualStudio Installer or MinGW
-2. Open console, go to folder DataStrucutres and run:
-
-```bash
-$ g++ *.cpp
-```
+Install C++ via VisualStudio Installer or MinGW
 
 - Linux
 
-2. Just open terminal, go to folder DataStrucutres and run:
-
-```bash
-$ g++ *.cpp
-```
+Just open terminal, go to folder DataStrucutres and run:
 
 - MacOS
 
-1. Install C++ via XCode IDE
-2. Open console, go to folder DataStrucutres and run:
+Install C++ via XCode IDE
+
+## Running
 
 ```bash
 $ g++ *.cpp
