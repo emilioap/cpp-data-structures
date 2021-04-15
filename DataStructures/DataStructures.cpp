@@ -1,6 +1,7 @@
 #include "Stack.h"
 #include "Queue.h"
 #include "HashTable.h"
+#include "BinarySearchTree.h"
 #include <iostream>
 
 void execStack() {
@@ -92,7 +93,45 @@ void execHashTable() {
 }
 
 void execBinarySearchTree() {
-    std::cout << "Not implemented yet :(" << std::endl;
+    BinarySearchTree searchTree;
+    const int TOTAL_PRODUCTS = 8;
+    int ras[TOTAL_PRODUCTS] = { 20, 18, 58, 7, 19, 26, 25, 30 };
+    std::string names[TOTAL_PRODUCTS] = { "TV", "Phone", "Watch", "Bag", "Keyboard", "Pen", "Book", "Chair" };
+    Product products[TOTAL_PRODUCTS];
+
+    for (int i = 0; i < TOTAL_PRODUCTS; i++) {
+        Product product = Product(ras[i], names[i]);
+        products[i] = product;
+        searchTree.insertProduct(product);
+    }
+    std::cout << "\nInserting products...\n" << std::endl;
+
+    std::cout << "Pre: ";
+    searchTree.printPreOrder();
+    std::cout << std::endl;
+
+    std::cout << "Post: ";
+    searchTree.printPostOrder();
+    std::cout << std::endl;
+
+    std::cout << "In: ";
+    searchTree.printInOrder();
+    std::cout << std::endl;
+
+    searchTree.deleteProduct(products[0].getCode());
+    std::cout << "\nDeleting products...\n" << std::endl;
+
+    std::cout << "Pre: ";
+    searchTree.printPreOrder();
+    std::cout << std::endl;
+
+    std::cout << "Post: ";
+    searchTree.printPostOrder();
+    std::cout << std::endl;
+
+    std::cout << "In: ";
+    searchTree.printInOrder();
+    std::cout << std::endl;
 }
 
 void execGraph() {

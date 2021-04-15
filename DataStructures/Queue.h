@@ -1,5 +1,5 @@
 #pragma once
-#include "NodeType.h"
+#include "QueueNode.h"
 
 class Queue {
 public:
@@ -12,6 +12,6 @@ public:
 	char dequeue();
 
 private:
-	NodeType* front;
-	NodeType* rear;
+	QueueNode* front;
+	QueueNode* rear;
 };

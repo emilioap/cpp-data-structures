@@ -8,7 +8,7 @@ Queue::Queue() {
 }
 
 Queue::~Queue() {
-	NodeType* tempPointer;
+	QueueNode* tempPointer;
 	while (front != NULL) {
 		tempPointer = front;
 		front = front->next;
@@ -19,9 +19,9 @@ Queue::~Queue() {
 
 bool Queue::isFull() const
 {
-	NodeType* location;
+	QueueNode* location;
 	try {
-		location = new NodeType;
+		location = new QueueNode;
 		delete location;
 		return false;
 	}
@@ -36,8 +36,8 @@ bool Queue::isEmpty() const {
 
 void Queue::enqueue(char itemInfo) {
 	if (!isFull()) {
-		NodeType* node;
-		node = new NodeType;
+		QueueNode* node;
+		node = new QueueNode;
 		node->info = itemInfo;
 		node->next = NULL;
 
@@ -55,7 +55,7 @@ void Queue::enqueue(char itemInfo) {
 
 char Queue::dequeue() {
 	if (!isEmpty()) {
-		NodeType* tempPointer;
+		QueueNode* tempPointer;
 		tempPointer = front;
 		char itemInfo = front->info;
 		front = front->next;
@@ -72,7 +72,7 @@ char Queue::dequeue() {
 }
 
 void Queue::print() const {
-	NodeType* tempPointer = front;
+	QueueNode* tempPointer = front;
 	while (tempPointer != NULL) {
 		std::cout << tempPointer->info;
 		tempPointer = tempPointer->next;
