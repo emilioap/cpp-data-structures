@@ -1,8 +1,9 @@
+#include <iostream>
 #include "Stack.h"
 #include "Queue.h"
 #include "HashTable.h"
 #include "BinarySearchTree.h"
-#include <iostream>
+#include "Graph.h"
 
 void execStack() {
     char character;
@@ -135,7 +136,49 @@ void execBinarySearchTree() {
 }
 
 void execGraph() {
-    std::cout << "Not implemented yet :(" << std::endl;
+    Graph graph;
+
+    std::cout << "\n\nCreated vertices and added initial edges:\n" << std::endl;
+    Vertex a = Vertex("A"); graph.addVertex(a);
+    Vertex b = Vertex("B"); graph.addVertex(b);
+    Vertex c = Vertex("C"); graph.addVertex(c);
+    Vertex d = Vertex("D"); graph.addVertex(d);
+    Vertex e = Vertex("E"); graph.addVertex(e);
+    graph.addEdge(a, b, 2);
+    graph.addEdge(b, c, 3);
+    graph.addEdge(d, e, 5);
+    graph.addEdge(a, c, 1);
+    graph.addEdge(c, e, 4);
+    graph.printMatrix();
+    
+    while (true) {
+        char vertex1;
+        char vertex2;
+        int weigth;
+
+        char response;
+        std::cout << "\nDo you want add more edges? (Y/N)\n" << std::endl;
+        std::cin >> response;
+
+        if (response != tolower('y'))
+            break;
+
+        std::cout << "Choose the vertex 1 (a,b,c,d or e) and press Enter:\n" << std::endl;
+        std::cin >> vertex1;
+        int index1 = graph.getIndexByName(std::string(1, toupper(vertex1)));
+        Vertex v1 = graph.getVertexByIndex(index1);
+
+        std::cout << "Choose the vertex 2 (a,b,c,d or e) and press Enter:\n" << std::endl;
+        std::cin >> vertex2;
+        int index2 = graph.getIndexByName(std::string(1, toupper(vertex2)));
+        Vertex v2 = graph.getVertexByIndex(index2);
+
+        std::cout << "Choose the an weigh (int) to edge and press Enter:\n" << std::endl;
+        std::cin >> weigth;
+        graph.addEdge(v1, v2, weigth);
+    }
+
+    graph.printMatrix();
 }
 
 int main()
